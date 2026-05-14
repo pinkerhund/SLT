@@ -27,6 +27,14 @@ public class Board {
             return false;
         }
 
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
+        }
+
+        if (cells[row][col] != '-') {
+            return false;
+        }
+
         cells[row][col] = marker;
         return true;
     }
