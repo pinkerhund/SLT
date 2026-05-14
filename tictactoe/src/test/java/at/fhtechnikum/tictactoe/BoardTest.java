@@ -57,4 +57,54 @@ public class BoardTest {
         assertFalse(result);
         assertEquals('-', board.getCell(0, 0));
     }
+
+    @Test
+    void shouldRejectOccupiedCell() {
+        Board board = new Board();
+
+        board.placeMarker(1, 1, 'X');
+
+        boolean result = board.placeMarker(1, 1, 'O');
+
+        assertFalse(result);
+        assertEquals('X', board.getCell(1, 1));
+    }
+
+    @Test
+    void shouldRejectInvalidRow() {
+        Board board = new Board();
+
+        boolean result = board.placeMarker(5, 0, 'X');
+
+        assertFalse(result);
+    }
+
+    @Test
+    void shouldRejectInvalidColumn() {
+        Board board = new Board();
+
+        boolean result = board.placeMarker(0, 5, 'O');
+
+        assertFalse(result);
+    }
+
+    @Test
+    void shouldRejectNegativeCoordinates() {
+        Board board = new Board();
+
+        boolean result = board.placeMarker(-1, 0, 'X');
+
+        assertFalse(result);
+    }
+
+    @Test
+    void shouldNotChangeBoardForInvalidMove() {
+        Board board = new Board();
+
+        board.placeMarker(0, 0, 'X');
+
+        board.placeMarker(5, 5, 'O');
+
+        assertEquals('X', board.getCell(0, 0));
+    }
 }
