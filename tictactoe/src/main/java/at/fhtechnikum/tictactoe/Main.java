@@ -6,6 +6,9 @@ public class Main {
 
         Board board = new Board();
 
+        board.placeMarker(1, 1, 'X');
+        board.placeMarker(0, 0, 'O');
+
         board.printBoard();
     }
 }
