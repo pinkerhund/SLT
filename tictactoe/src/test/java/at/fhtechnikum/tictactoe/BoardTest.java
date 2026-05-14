@@ -2,7 +2,7 @@ package at.fhtechnikum.tictactoe;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTest {
 
@@ -28,5 +28,33 @@ public class BoardTest {
                 assertEquals('-', board.getCell(row, col));
             }
         }
+    }
+
+    @Test
+    void shouldPlaceXMarker() {
+        Board board = new Board();
+
+        board.placeMarker(1, 1, 'X');
+
+        assertEquals('X', board.getCell(1, 1));
+    }
+
+    @Test
+    void shouldPlaceOMarker() {
+        Board board = new Board();
+
+        board.placeMarker(0, 0, 'O');
+
+        assertEquals('O', board.getCell(0, 0));
+    }
+
+    @Test
+    void shouldRejectInvalidMarker() {
+        Board board = new Board();
+
+        boolean result = board.placeMarker(0, 0, 'A');
+
+        assertFalse(result);
+        assertEquals('-', board.getCell(0, 0));
     }
 }

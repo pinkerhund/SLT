@@ -21,6 +21,16 @@ public class Board {
         return cells[row][col];
     }
 
+    public boolean placeMarker(int row, int col, char marker) {
+
+        if (marker != 'X' && marker != 'O') {
+            return false;
+        }
+
+        cells[row][col] = marker;
+        return true;
+    }
+
     public void printBoard() {
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
