@@ -38,6 +38,22 @@ public class Game {
         switchPlayer();
     }
 
+    public boolean isDraw() {
+        return !hasWinner() && isBoardFull();
+    }
+
+    private boolean isBoardFull() {
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                if (board.getCell(row, col) == '-') {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
     private void switchPlayer() {
         char nextMarker = currentPlayer.getMarker() == 'X' ? 'O' : 'X';
         currentPlayer = new Player(nextMarker);
