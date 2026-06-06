@@ -24,6 +24,10 @@ public class Game {
         return winner != null;
     }
 
+    public boolean isDraw() {
+        return !hasWinner() && isBoardFull();
+    }
+
     public void makeMove(int row, int col) {
         boolean validMove = board.placeMarker(row, col, currentPlayer.getMarker());
 
@@ -36,10 +40,6 @@ public class Game {
         }
 
         switchPlayer();
-    }
-
-    public boolean isDraw() {
-        return !hasWinner() && isBoardFull();
     }
 
     private boolean isBoardFull() {
