@@ -29,6 +29,8 @@ public class Game {
     }
 
     public void makeMove(int row, int col) {
+        System.out.println("Current player: " + currentPlayer.getMarker() + "\n");
+
         boolean validMove = board.placeMarker(row, col, currentPlayer.getMarker());
 
         if (!validMove) {
