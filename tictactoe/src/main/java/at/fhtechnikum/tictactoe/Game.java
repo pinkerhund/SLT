@@ -39,6 +39,13 @@ public class Game {
 
         if (hasWinningCombination(currentPlayer.getMarker())) {
             winner = currentPlayer;
+            System.out.println("Player " + winner.getMarker() + " wins!");
+            return;
+        }
+
+        if (isBoardFull()) {
+            System.out.println("Game is a draw.");
+            return;
         }
 
         switchPlayer();
