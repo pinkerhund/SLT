@@ -29,13 +29,15 @@ public class Game {
     }
 
     public void makeMove(int row, int col) {
+        System.out.println("Current player: " + currentPlayer.getMarker() + "\n");
+
         boolean validMove = board.placeMarker(row, col, currentPlayer.getMarker());
 
         if (!validMove) {
             throw new IllegalArgumentException("Move is invalid or field is already occupied.");
         }
 
-        board.printBoard();  // Print board after valid move
+        board.printBoard();
 
         if (hasWinningCombination(currentPlayer.getMarker())) {
             winner = currentPlayer;
