@@ -1,5 +1,6 @@
 package at.fhtechnikum.tictactoe;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class BoardPrintTest {
 
     @Test
+    @DisplayName("Positive test: printed board contains markers and empty cells")
     void printBoardShouldContainMarkersAndEmptyCells() {
         Board board = new Board();
         board.placeMarker(0, 0, 'X');
@@ -18,6 +20,7 @@ class BoardPrintTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream original = System.out;
         System.setOut(new PrintStream(out));
+
         try {
             board.printBoard();
         } finally {
@@ -25,6 +28,7 @@ class BoardPrintTest {
         }
 
         String printed = out.toString();
+
         assertTrue(printed.contains("X"), "Expected printed board to contain 'X'. Output:\n" + printed);
         assertTrue(printed.contains("O"), "Expected printed board to contain 'O'. Output:\n" + printed);
         assertTrue(printed.contains("-"), "Expected printed board to contain '-' for empty cells. Output:\n" + printed);

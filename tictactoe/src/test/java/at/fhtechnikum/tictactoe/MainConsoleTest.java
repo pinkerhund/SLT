@@ -1,5 +1,6 @@
 package at.fhtechnikum.tictactoe;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class MainConsoleTest {
 
     @Test
+    @DisplayName("Integration test: invalid input is handled and play-again prompt is shown")
     void shouldHandleInvalidInputWithoutCrashingAndShowPlayAgainPrompt() throws Exception {
         String simulatedInput =
                 "invalid\n" +

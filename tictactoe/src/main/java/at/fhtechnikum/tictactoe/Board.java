@@ -26,13 +26,8 @@ public class Board {
     }
 
     public boolean placeMarker(int row, int col, char marker) {
-        if (!isValidMarker(marker)) {
-            return false;
-        }
-
-        if (!isValidPosition(row, col)) {
-            return false;
-        }
+        validateMarker(marker);
+        validatePosition(row, col);
 
         if (cells[row][col] != EMPTY_CELL) {
             return false;
@@ -52,8 +47,10 @@ public class Board {
         System.out.println();
     }
 
-    private boolean isValidMarker(char marker) {
-        return marker == 'X' || marker == 'O';
+    private void validateMarker(char marker) {
+        if (marker != 'X' && marker != 'O') {
+            throw new IllegalArgumentException("Marker must be X or O.");
+        }
     }
 
     private boolean isValidPosition(int row, int col) {
