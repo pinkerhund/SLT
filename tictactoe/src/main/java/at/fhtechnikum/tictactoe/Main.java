@@ -4,11 +4,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Board board = new Board();
+        Game game = new Game();
 
-        board.placeMarker(1, 1, 'X');
-        board.placeMarker(0, 0, 'O');
+        game.makeMove(0, 0);
+        game.makeMove(1, 0);
+        game.makeMove(2, 1);
+        game.makeMove(1, 1);
+        game.makeMove(0, 2);
+        game.makeMove(1, 2);
 
-        board.printBoard();
+
     }
 }
