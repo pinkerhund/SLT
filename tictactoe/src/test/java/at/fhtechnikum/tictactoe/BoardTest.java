@@ -70,6 +70,16 @@ class BoardTest {
     }
 
     @Test
+    @DisplayName("Positive test: getCell returns marker at valid position")
+    void shouldReturnCellValueForValidPosition() {
+        Board board = new Board();
+
+        board.placeMarker(2, 2, 'X');
+
+        assertEquals('X', board.getCell(2, 2));
+    }
+
+    @Test
     @DisplayName("Negative test: invalid marker is rejected")
     void shouldRejectInvalidMarker() {
         Board board = new Board();
@@ -125,6 +135,38 @@ class BoardTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> board.placeMarker(-1, 0, 'X')
+        );
+    }
+
+    @Test
+    @DisplayName("Negative test: getCell rejects row outside the board")
+    void shouldRejectGetCellWithInvalidRow() {
+        Board board = new Board();
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> board.getCell(5, 0)
+        );
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> board.getCell(-1, 0)
+        );
+    }
+
+    @Test
+    @DisplayName("Negative test: getCell rejects column outside the board")
+    void shouldRejectGetCellWithInvalidColumn() {
+        Board board = new Board();
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> board.getCell(0, 5)
+        );
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> board.getCell(0, -1)
         );
     }
 
