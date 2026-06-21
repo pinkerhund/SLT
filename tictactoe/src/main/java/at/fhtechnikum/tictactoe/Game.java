@@ -35,6 +35,8 @@ public class Game {
             throw new IllegalArgumentException("Move is invalid or field is already occupied.");
         }
 
+        board.printBoard();
+
         if (hasWinningCombination(currentPlayer.getMarker())) {
             winner = currentPlayer;
         }
