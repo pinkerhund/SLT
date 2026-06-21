@@ -29,6 +29,10 @@ public class Game {
     }
 
     public void makeMove(int row, int col) {
+        if (hasWinner() || isDraw()) {
+            throw new IllegalArgumentException("Game has already ended. Start a new game.");
+        }
+
         System.out.println("Current player: " + currentPlayer.getMarker() + "\n");
 
         boolean validMove = board.placeMarker(row, col, currentPlayer.getMarker());
